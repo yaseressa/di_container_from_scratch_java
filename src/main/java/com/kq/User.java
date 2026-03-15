@@ -1,11 +1,25 @@
 package com.kq;
 
+import com.kq.annotations.Lazy;
 import com.kq.annotations.Singleton;
 
 @Singleton
-public record User(String name, Integer age) {
-    public User {
-        if (name == null) name = "Yaser";
-        if (age == null) age = 0;
+@Lazy
+public class User {
+    String name;
+    Integer age;
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public User(UserRepository repository) {
+        UserEntity yaser = repository.getUser("Yaser");
+        name = yaser.name;
+        age = yaser.age;
     }
 }
