@@ -25,6 +25,10 @@ class UserEntity {
 
 @Prototype
 public class UserRepository {
+    public UserRepository(User user) {
+
+    }
+
     List<UserEntity> users = List.of(
             new UserEntity("Yaser", 22),
             new UserEntity("Abdi", 50),

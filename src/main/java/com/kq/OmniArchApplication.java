@@ -67,14 +67,13 @@ public class OmniArchApplication {
             for (Class<?> prototypeClass : classes) {
 
                 Prototype prototypal = prototypeClass.getAnnotation(Prototype.class);
-                String beanName = prototypeClass.getSimpleName();
+                String name = prototypeClass.getSimpleName();
 
                 if (StringUtils.stringPresent(prototypal.value())) {
-                    beanName = prototypal.value();
+                    name = prototypal.value();
                 }
 
-                context.getPrototypalComponents().put(beanName, prototypeClass);
-
+                context.registerPrototype(prototypeClass, name);
             }
         }
     }
@@ -85,18 +84,18 @@ public class OmniArchApplication {
             for (Class<?> singletonClass : classes) {
 
                 Singleton singleton = singletonClass.getAnnotation(Singleton.class);
-                String beanName = singletonClass.getSimpleName();
+                String name = singletonClass.getSimpleName();
                 if (StringUtils.stringPresent(singleton.value())) {
-                    beanName = singleton.value();
+                    name = singleton.value();
                 }
                 if (singletonClass.isAnnotationPresent(Lazy.class)) {
-                    context.getLazyComponents().put(beanName, singletonClass);
+                    context.getLazyComponents().put(name, singletonClass);
                     continue;
                 }
-                if (context.getSingletonComponents().containsKey(beanName))
-                    throw new InstantiationException("[Component %s]: Already instantiated".formatted(beanName));
+                if (context.getSingletonComponents().containsKey(name))
+                    throw new InstantiationException("[Component %s]: Already instantiated".formatted(name));
 
-                context.getSingletonComponents().put(beanName, context.addComponent(singletonClass, beanName));
+                context.addSingleton(singletonClass, name);
 
             }
         }
