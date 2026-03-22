@@ -29,7 +29,6 @@ public class ApplicationContext {
     }
 
     public void populateContext() throws Exception {
-        try {
             for (var definition : definitions) {
                 if (definition.getScope() == SINGLETON) {
                     if (definition.isLazy()) continue;
@@ -38,9 +37,7 @@ public class ApplicationContext {
                 }
 
             }
-        } catch (RuntimeException e) {
-            throw new DIException(e.getMessage());
-        }
+
     }
 
     public Object getComponent(String name)
