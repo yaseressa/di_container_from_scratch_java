@@ -1,8 +1,4 @@
-package com.kq;
-
-import com.kq.core.ApplicationContext;
-import com.kq.core.ComponentRegistrar;
-import com.kq.core.ComponentScanner;
+package com.kq.core;
 
 import java.util.Set;
 

@@ -1,4 +1,4 @@
-package com.kq;
+package com.kq.examples;
 
 import com.kq.core.annotations.Prototype;
 

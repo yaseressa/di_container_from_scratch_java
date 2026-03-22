@@ -1,8 +1,9 @@
 package com.kq;
 
+import com.kq.core.OmniArchApplication;
 import com.kq.core.annotations.ComponentScan;
 
-@ComponentScan
+@ComponentScan(include = "com.kq.examples")
 public class App {
     public static void main(String[] args)
             throws Exception {
