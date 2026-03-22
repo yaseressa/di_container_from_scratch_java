@@ -2,6 +2,7 @@ package com.kq;
 
 import com.kq.core.OmniArchApplication;
 import com.kq.core.annotations.ComponentScan;
+import com.kq.examples.UserController;
 
 @ComponentScan(include = "com.kq.examples")
 public class App {
@@ -9,14 +10,9 @@ public class App {
             throws Exception {
         var componentFactory = OmniArchApplication.run(App.class);
 
-        // Singleton
-        System.out.println(componentFactory.getComponent("user"));
-        System.out.println(componentFactory.getComponent("user"));
+        System.out.println(((UserController)componentFactory.getComponent("controller")).getUserByName("Yaser").getName());
 
-        // Prototype
-        System.out.println(componentFactory.getComponent("userRepository"));
-        System.out.println(componentFactory.getComponent("userRepository"));
-        System.out.println(componentFactory.getComponent("userRepository"));
+
 
 
     }
