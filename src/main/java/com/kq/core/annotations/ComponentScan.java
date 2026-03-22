@@ -1,4 +1,5 @@
-package com.kq.annotations;
+package com.kq.core.annotations;
+
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +8,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
-public @interface Singleton {
-    String value() default "";
+public @interface ComponentScan {
+    String exclude() default "";
+    String include() default "";
 }

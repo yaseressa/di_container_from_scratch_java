@@ -1,6 +1,6 @@
 package com.kq;
 
-import com.kq.annotations.Prototype;
+import com.kq.core.annotations.Prototype;
 
 import java.util.List;
 
@@ -25,9 +25,7 @@ class UserEntity {
 
 @Prototype
 public class UserRepository {
-    public UserRepository(User user) {
 
-    }
 
     List<UserEntity> users = List.of(
             new UserEntity("Yaser", 22),

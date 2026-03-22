@@ -1,7 +1,7 @@
 package com.kq;
 
-import com.kq.annotations.Lazy;
-import com.kq.annotations.Singleton;
+import com.kq.core.annotations.Lazy;
+import com.kq.core.annotations.Singleton;
 
 @Singleton
 @Lazy

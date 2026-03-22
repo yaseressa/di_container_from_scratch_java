@@ -1,18 +1,22 @@
 package com.kq;
 
-
-import com.kq.annotations.ComponentScan;
-import javassist.bytecode.DuplicateMemberException;
-import java.lang.reflect.InvocationTargetException;
+import com.kq.core.annotations.ComponentScan;
 
 @ComponentScan
-public class App
-{
-    public static void main( String[] args ) throws InvocationTargetException, InstantiationException, IllegalAccessException, DuplicateMemberException {
-        var beanFactory = OmniArchApplication.run(App.class);
-        User user = (User)beanFactory.getComponent("User");
-        System.out.println(user.getName());
-        System.out.println(beanFactory.getComponents());
+public class App {
+    public static void main(String[] args)
+            throws Exception {
+        var componentFactory = OmniArchApplication.run(App.class);
+
+        // Singleton
+        System.out.println(componentFactory.getComponent("user"));
+        System.out.println(componentFactory.getComponent("user"));
+
+        // Prototype
+        System.out.println(componentFactory.getComponent("userRepository"));
+        System.out.println(componentFactory.getComponent("userRepository"));
+        System.out.println(componentFactory.getComponent("userRepository"));
+
 
     }
 }
